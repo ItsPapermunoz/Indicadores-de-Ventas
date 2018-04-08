@@ -30,3 +30,21 @@ def confirm():
     else:
         print("Confirmation Failed!")
         return False
+
+
+def UEIP(x, y):
+    if y == 0:
+        while y is not 2:
+            try:
+                UserInput = int(input(x))
+                y = 2
+            except:
+                print('Entrada no valida, intente nuevamente...')
+    elif y == 1:
+        while y is not 2:
+            try:
+                UserInput = str(input(x))
+                y = 2
+            except:
+                print('Entrada no valida, intente nuevamente...')
+    return UserInput
