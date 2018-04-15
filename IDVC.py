@@ -37,7 +37,7 @@ class Entry:
         self.ATVar2 = ATVar2
         self.Fecha = Fecha
 
-    def Reporte():
+    def Reporte(self):
         cls()
         print('-----Fecha de entrada: ' + str(self.Fecha) + ' -----')
         print('\n-----  Resultado Semanal ano anterior  -----\n')
@@ -111,7 +111,16 @@ def NewEntry():
 
 
 def ReadEntries():
-    os.listdir()
+    x = os.listdir('Entradas')
+    i = 1
+    for entry in x:
+        print('Entrada ' + str(i) + '. ' + str(entry))
+        i += 1
+    entrySel = UEIP('Seleccione el numero de entrada para leer: ', 0)
+    entrySel -= 1
+    sel = x[entrySel]
+    entry = pkl.load(open('Entradas/' + sel, 'rb'))
+    entry.Reporte()
 
 
 def MenuSel():
