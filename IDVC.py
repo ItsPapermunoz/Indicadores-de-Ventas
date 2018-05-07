@@ -123,6 +123,19 @@ def ReadEntries():
     entry.Reporte()
 
 
+def DelEntry():
+    x = os.listdir('Entradas')
+    i = 1
+    for entry in x:
+        print('Entrada ' + str(i) + '. ' + str(entry))
+        i += 1
+    entrySel = UEIP('Seleccione el numero de entrada para eliminar: ', 0)
+    entrySel -= 1
+    sel = x[entrySel]
+    entry = pkl.load(open('Entradas/' + sel, 'rb'))
+    os.remove('Entradas/' + sel)
+    print('La entrada ha sido eliminada de forma exitosa')
+
 def MenuSel():
     print("Seleccione la opcion deseada.")
     try:
@@ -138,6 +151,7 @@ def Menu():
     print('*****  Menu Principal  *****')
     print('1.Nueva entrada.')
     print('2.Leer Entradas')
+    print('3.Eliminar Entrada')
     print('0.Salir del programa.')
     sel = MenuSel()
     print('Ha seleccionado la opcion numero ' + str(sel) + '.')
@@ -145,6 +159,11 @@ def Menu():
         NewEntry()
     elif sel == 2:
         ReadEntries()
+    elif sel == 3:
+        DelEntry()
+    else:
+        print('Gracias por utilizar Indicadores de Ventas.')
+
 # Main
 
 Log = Startup()
