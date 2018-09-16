@@ -33,18 +33,19 @@ def confirm():
 
 
 def UEIP(x, y):
+    """This Function Confirms whether input type is correct"""
     if y == 0:
         while y is not 2:
             try:
                 UserInput = int(input(x))
                 y = 2
             except:
-                print('Entrada no valida, intente nuevamente...')
+                print('Not a Valid Entry.')
     elif y == 1:
         while y is not 2:
             try:
                 UserInput = str(input(x))
                 y = 2
             except:
-                print('Entrada no valida, intente nuevamente...')
+                print('Not a Valid Entry.')
     return UserInput
