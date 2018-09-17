@@ -49,3 +49,10 @@ def UEIP(x, y):
             except:
                 print('Not a Valid Entry.')
     return UserInput
+
+
+# Main Code
+
+print("Succesfully loaded Itspaper's essentials Module!")
+print("Thank you for Using!")
+pause()
