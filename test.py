@@ -115,15 +115,17 @@ def DC2(dates):
                     x += 1
     return dates2
 
-
-
-
-
-
-
-
 # Main Code
 
-print("Succesfully loaded Itspaper's essentials Module!")
-print("Thank you for Using IEM!")
-pause()
+
+i = 0
+xdates = []
+while i is not 5:
+    x = DP()
+    xdates.append(x)
+    i += 1
+
+ydates = DC2(xdates)
+
+print(ydates)
+
