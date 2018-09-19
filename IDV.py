@@ -8,13 +8,13 @@ __date__ = "16/09/18"
 
 # Module Imports
 import IEM as iem
-import pickle as pkl
-import os
 import time
+import pickle as pkl
 
 
 # Variable Declarations
 today = time.strftime("%c")
+reports = []
 
 # Class definitions
 
@@ -51,8 +51,36 @@ class Report:
 # Function Definitions
 
 
+def report_log():
+    try:
+        reports = pkl.load(open("DataLog.data", "rb"))
+    except FileNotFoundError:
+        reports = []
+        pkl.dump(reports, open("DataLog.data", "wb"))
+    finally:
+        return reports
+
+
+def save(report_list):
+    pkl.dump(report_list, open("DataLog.data", "wb"))
+    print("Succesfully saved to DataLog.data!")
+
+
 def report_entry():
     date = iem.DP()
+    net_salesr = iem.UEIP("Net Sales: ", 0)
+    net_salesb = iem.UEIP("Budget Net Sales: ", 0)
+    adtr= iem.UEIP("ADT: ", 0)
+    adtb = iem.UEIP("Budget ADT: ", 0)
+    atr = iem.UEIP("Per Check: ", 0)
+    atb = iem.UEIP("Budget Per Check: ", 0)
+    datestr = iem.PD(date)
+    entry = Report(net_salesr,net_salesb,adtr,adtb,atr,atb,date)
+    entry.review()
+    reports.append(entry)
+    save(reports)
+    return reports
+
 
 # Main Code
 
